@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from MediaApp.views import VideoViewSet, VideoEspecificoViewSet
+from MediaApp.views import *
 from rest_framework import routers
+
 
 router = routers.DefaultRouter()
 router.register('Videos', VideoViewSet, basename='Video')
+router.register('Categorias', CategoriaViewSet, basename='Categoria')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('Videos/<int:pk>/', VideoEspecificoViewSet.as_view())
+    path('Videos/<int:pk>/', VideoEspecificoViewSet.as_view()),
+    path('Categorias/<int:pk>/', CategoriaEspecificaViewSet.as_view()),
+    path('Categorias/<int:id>/Videos/', VideosDaCategoriaViewSet.as_view())
 ]
