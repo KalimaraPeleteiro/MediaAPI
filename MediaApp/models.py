@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Categoria(models.Model):
-    id = models.IntegerField(primary_key=True)
-    titulo = models.CharField(max_length=100)
-    cor = models.CharField(max_length=50)
+    id = models.IntegerField(primary_key=True, default=1)
+    titulo = models.CharField(max_length=100, blank=False, default='LIVRE')
+    cor = models.CharField(max_length=50, blank=False)
 
 
 class Video(models.Model):
